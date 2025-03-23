@@ -40,15 +40,25 @@ public class BookingDAO  {
             ResultSet rs = stmt.executeQuery();
             if (rs.next()) {
                 return new Booking(
+//                        rs.getInt("id"),
+//                        rs.getInt("user_id"),
+//                        rs.getInt("car_id"),
+//                        rs.getDate("start_date"),
+//                        rs.getDate("end_date"),
+//                        rs.getDouble("total_amount"),
+//                        rs.getString("status"),
+//                        rs.getTimestamp("created_at"),
+//                        rs.getTimestamp("updated_at")
+
                         rs.getInt("id"),
-                        rs.getInt("user_id"),
-                        rs.getInt("car_id"),
-                        rs.getDate("start_date"),
-                        rs.getDate("end_date"),
-                        rs.getDouble("total_amount"),
-                        rs.getString("status"),
+                        rs.getInt("userId"),
+                       rs.getInt("carId"),
+                       rs.getDate("startDate"),
+                      rs.getDate("end_date"),
+                      rs.getDouble("total_amount"),
+                      rs.getString("status"),
                         rs.getTimestamp("created_at"),
-                        rs.getTimestamp("updated_at")
+                       rs.getTimestamp("updated_at")
                 );
             }
         } catch (SQLException e) {
@@ -59,7 +69,8 @@ public class BookingDAO  {
 
     // UPDATE Booking
     public boolean updateBooking(Booking booking) {
-        String sql = "UPDATE bookings SET start_date = ?, end_date = ?, total_amount = ?, status = ? WHERE id = ?";
+//        String sql = "UPDATE bookings SET start_date = ?, end_date = ?, total_amount = ?, status = ? WHERE id = ?";
+        String sql = "UPDATE bookings SET startDate = ?, endDate = ?, totalDmount = ?, status = ? WHERE id = ?";
         try (Connection conn = DBConfig.getConnection();
                 PreparedStatement stmt = conn.prepareStatement(sql)) {
             stmt.setDate(1, new java.sql.Date(booking.getStartDate().getTime()));
@@ -96,16 +107,26 @@ public class BookingDAO  {
              ResultSet rs = stmt.executeQuery()) {
             while (rs.next()) {
                 bookings.add(new Booking(
+//                        rs.getInt("id"),
+//                        rs.getInt("user_id"),
+//                        rs.getInt("car_id"),
+//                        rs.getDate("start_date"),
+//                        rs.getDate("end_date"),
+//                        rs.getDouble("total_amount"),
+//                        rs.getString("status"),
+//                        rs.getTimestamp("created_at"),
+//                        rs.getTimestamp("updated_at"),
+//                        rs.getInt("driver_id")
                         rs.getInt("id"),
-                        rs.getInt("user_id"),
-                        rs.getInt("car_id"),
-                        rs.getDate("start_date"),
-                        rs.getDate("end_date"),
-                        rs.getDouble("total_amount"),
+                        rs.getInt("userId"),
+                        rs.getInt("carId"),
+                        rs.getDate("startDate"),
+                        rs.getDate("endDate"),
+                        rs.getDouble("totalAmount"),
                         rs.getString("status"),
-                        rs.getTimestamp("created_at"),
-                        rs.getTimestamp("updated_at"),
-                        rs.getInt("driver_id")
+                        rs.getTimestamp("createdAt"),
+                        rs.getTimestamp("updatedAt"),
+                        rs.getInt("driverId")
 
                 ));
             }
@@ -127,15 +148,24 @@ public class BookingDAO  {
             try (ResultSet rs = stmt.executeQuery()) {
                 while (rs.next()) {
                     bookings.add(new Booking(
+//                            rs.getInt("id"),
+//                            rs.getInt("user_id"),
+//                            rs.getInt("car_id"),
+//                            rs.getDate("start_date"),  // ✅ Convert to LocalDate
+//                            rs.getDate("end_date"),    // ✅ Convert to LocalDate
+//                            rs.getDouble("total_amount"),
+//                            rs.getString("status"),
+//                            rs.getTimestamp("created_at"), // ✅ Convert to LocalDateTime
+//                            rs.getTimestamp("updated_at")  // ✅ Convert to LocalDateTime
                             rs.getInt("id"),
-                            rs.getInt("user_id"),
-                            rs.getInt("car_id"),
-                            rs.getDate("start_date"),  // ✅ Convert to LocalDate
-                            rs.getDate("end_date"),    // ✅ Convert to LocalDate
-                            rs.getDouble("total_amount"),
+                            rs.getInt("userId"),
+                            rs.getInt("carId"),
+                            rs.getDate("startDate"),  // ✅ Convert to LocalDate
+                            rs.getDate("endDate"),    // ✅ Convert to LocalDate
+                            rs.getDouble("totalAmount"),
                             rs.getString("status"),
-                            rs.getTimestamp("created_at"), // ✅ Convert to LocalDateTime
-                            rs.getTimestamp("updated_at")  // ✅ Convert to LocalDateTime
+                            rs.getTimestamp("createdAt"), // ✅ Convert to LocalDateTime
+                            rs.getTimestamp("updatedAt")  // ✅ Convert to LocalDateTime
                     ));
                 }
             }

@@ -9,11 +9,17 @@ import java.util.List;
 
 public class PaymentDAOImpl implements PaymentDAO {
 
-    private static final String INSERT_PAYMENT = "INSERT INTO payments (booking_id, user_id, payment_amount, currency, payment_method, payment_status, transaction_id, remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+//    private static final String INSERT_PAYMENT = "INSERT INTO payments (booking_id, user_id, payment_amount, currency, payment_method, payment_status, transaction_id, remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+//    private static final String SELECT_PAYMENT_BY_ID = "SELECT * FROM payments WHERE id = ?";
+//    private static final String SELECT_ALL_PAYMENTS = "SELECT * FROM payments";
+//    private static final String UPDATE_PAYMENT = "UPDATE payments SET payment_status = ? WHERE id = ?";
+//    private static final String DELETE_PAYMENT = "DELETE FROM payments WHERE id = ?";
+private static final String INSERT_PAYMENT = "INSERT INTO payments (bookingId, userId, paymentAmount, currency, paymentMethod, paymentStatus, transactionId, remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
     private static final String SELECT_PAYMENT_BY_ID = "SELECT * FROM payments WHERE id = ?";
     private static final String SELECT_ALL_PAYMENTS = "SELECT * FROM payments";
     private static final String UPDATE_PAYMENT = "UPDATE payments SET payment_status = ? WHERE id = ?";
     private static final String DELETE_PAYMENT = "DELETE FROM payments WHERE id = ?";
+
 
 //    @Override
 //    public void createPayment(Payment payment) {
@@ -114,18 +120,30 @@ public class PaymentDAOImpl implements PaymentDAO {
 
             if (rs.next()) {
                 payment = new Payment(
+//                        rs.getInt("id"),
+//                        rs.getInt("booking_id"),
+//                        rs.getInt("user_id"),
+//                        rs.getDouble("payment_amount"),
+//                        rs.getString("currency"),
+//                        rs.getString("payment_method"),
+//                        rs.getTimestamp("payment_date"),
+//                        rs.getString("payment_status"),
+//                        rs.getString("transaction_id"),
+//                        rs.getString("remarks"),
+//                        rs.getTimestamp("created_at"),
+//                        rs.getTimestamp("updated_at")
                         rs.getInt("id"),
-                        rs.getInt("booking_id"),
-                        rs.getInt("user_id"),
-                        rs.getDouble("payment_amount"),
+                        rs.getInt("bookingId"),
+                        rs.getInt("userId"),
+                        rs.getDouble("paymentAmount"),
                         rs.getString("currency"),
-                        rs.getString("payment_method"),
-                        rs.getTimestamp("payment_date"),
-                        rs.getString("payment_status"),
-                        rs.getString("transaction_id"),
+                        rs.getString("paymentMethod"),
+                        rs.getTimestamp("paymentDate"),
+                        rs.getString("paymentStatus"),
+                        rs.getString("transactionId"),
                         rs.getString("remarks"),
-                        rs.getTimestamp("created_at"),
-                        rs.getTimestamp("updated_at")
+                        rs.getTimestamp("createdAt"),
+                        rs.getTimestamp("updatedAt")
                 );
                 System.out.println("Payment found: " + payment);  // Log the payment object fetched
             } else {

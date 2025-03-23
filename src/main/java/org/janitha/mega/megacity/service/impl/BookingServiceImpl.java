@@ -39,20 +39,6 @@ public class BookingServiceImpl implements BookingService {
         );
     }
 
-    // CREATE Booking
-//    @Override
-//    public boolean createBooking(BookingDTO bookingDTO) {
-//        try {
-//            User user =userService.getDriverUsers();
-//            bookingDTO.setDriverId(user.getId());
-//            Booking booking = toEntity(bookingDTO);
-//            return bookingDAO.createBooking(booking);
-//        } catch (ParseException | SQLException e) {
-//            e.printStackTrace();
-//            return false;
-//        }
-//    }
-
     @Override
     public boolean createBooking(BookingDTO bookingDTO) {
         try {
