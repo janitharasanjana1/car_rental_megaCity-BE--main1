@@ -165,18 +165,30 @@ private static final String INSERT_PAYMENT = "INSERT INTO payments (bookingId, u
 
             while (rs.next()) {
                 payments.add(new Payment(
+//                        rs.getInt("id"),
+//                        rs.getInt("booking_id"),
+//                        rs.getInt("user_id"),
+//                        rs.getDouble("payment_amount"),
+//                        rs.getString("currency"),
+//                        rs.getString("payment_method"),
+//                        rs.getTimestamp("payment_date"),
+//                        rs.getString("payment_status"),
+//                        rs.getString("transaction_id"),
+//                        rs.getString("remarks"),
+//                        rs.getTimestamp("created_at"),
+//                        rs.getTimestamp("updated_at")
                         rs.getInt("id"),
-                        rs.getInt("booking_id"),
-                        rs.getInt("user_id"),
-                        rs.getDouble("payment_amount"),
+                        rs.getInt("bookingId"),
+                        rs.getInt("userId"),
+                        rs.getDouble("paymentAmount"),
                         rs.getString("currency"),
-                        rs.getString("payment_method"),
-                        rs.getTimestamp("payment_date"),
-                        rs.getString("payment_status"),
-                        rs.getString("transaction_id"),
+                        rs.getString("paymentMethod"),
+                        rs.getTimestamp("paymentDate"),
+                        rs.getString("paymentStatus"),
+                        rs.getString("transactionId"),
                         rs.getString("remarks"),
-                        rs.getTimestamp("created_at"),
-                        rs.getTimestamp("updated_at")
+                        rs.getTimestamp("createdAt"),
+                        rs.getTimestamp("updatedAt")
                 ));
             }
         } catch (SQLException e) {
